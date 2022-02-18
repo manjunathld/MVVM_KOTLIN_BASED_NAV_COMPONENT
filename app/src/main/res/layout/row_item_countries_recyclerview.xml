@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_horizontal_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="6dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_horizontal_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="6dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vertical_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="6dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="6dp" />
+
+    <TextView
+        android:id="@+id/tv_countries_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country_id"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/gl_vertical_begin"
+        app:layout_constraintTop_toTopOf="@+id/gl_horizontal_begin" />
+
+    <TextView
+        android:id="@+id/tv_countries_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country_name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/gl_vertical_begin"
+        app:layout_constraintTop_toBottomOf="@+id/tv_countries_id" />
+
+    <TextView
+        android:id="@+id/tv_countries_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/countries_date"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/gl_vertical_begin"
+        app:layout_constraintTop_toBottomOf="@+id/tv_countries_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
