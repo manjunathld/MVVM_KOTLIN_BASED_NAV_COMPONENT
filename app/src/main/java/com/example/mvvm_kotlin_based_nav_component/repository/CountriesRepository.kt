@@ -39,8 +39,12 @@ class CountriesRepository(viewModelStoreOwner: ViewModelStoreOwner) {
                 call: Call<List<CountryModelResponse>>,
                 response: Response<List<CountryModelResponse>>
             ) {
-                countriesMutableLiveDataResponse.value = response.body()
-                countriesMutableLiveDataError.value = CountryModelError(false, "")
+                if (response.isSuccessful && response.body()!!.isNotEmpty()) {
+                    countriesMutableLiveDataResponse.value = response.body()
+                    countriesMutableLiveDataError.value = CountryModelError(false, "")
+                } else {
+                    countriesMutableLiveDataError.value = CountryModelError(true, "No data found!")
+                }
             }
 
             override fun onFailure(call: Call<List<CountryModelResponse>>, t: Throwable) {

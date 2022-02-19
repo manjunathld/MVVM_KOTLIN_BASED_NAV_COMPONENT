@@ -8,13 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm_kotlin_based_nav_component.R
 import com.example.mvvm_kotlin_based_nav_component.model.CountryModelResponse
 
-class CountriesAdapter(listCountryModelResponse: List<CountryModelResponse>)
-    : RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder>() {
+class CountriesAdapter(
+    listCountryModelResponse: List<CountryModelResponse>,
+    countriesViewHolderListener: CountriesViewHolderListener
+    ) : RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder>() {
 
     private lateinit var listCountryModelResponse: List<CountryModelResponse>
+    private lateinit var countriesViewHolderListener: CountriesViewHolderListener
 
     init {
         this.listCountryModelResponse = listCountryModelResponse
+        this.countriesViewHolderListener = countriesViewHolderListener
     }
 
     class CountriesViewHolder(countriesItemView: View)
@@ -39,12 +43,19 @@ class CountriesAdapter(listCountryModelResponse: List<CountryModelResponse>)
 
     override fun onBindViewHolder(holder: CountriesViewHolder, position: Int) {
         holder.bindData(listCountryModelResponse[position])
+        holder.itemView.setOnClickListener(View.OnClickListener {
+            countriesViewHolderListener.onItemClick(holder)
+        })
     }
 
     override fun getItemCount(): Int {
         return if (listCountryModelResponse.isNotEmpty()) {
             listCountryModelResponse.size
         } else { 0 }
+    }
+
+    public interface CountriesViewHolderListener {
+        fun onItemClick(countriesViewHolder: CountriesViewHolder)
     }
 
 }

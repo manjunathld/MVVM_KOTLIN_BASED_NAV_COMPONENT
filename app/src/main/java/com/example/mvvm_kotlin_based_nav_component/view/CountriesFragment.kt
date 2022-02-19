@@ -17,7 +17,7 @@ import com.example.mvvm_kotlin_based_nav_component.model.CountryModelError
 import com.example.mvvm_kotlin_based_nav_component.model.CountryModelResponse
 import com.example.mvvm_kotlin_based_nav_component.repository.CountriesRepository
 
-class CountriesFragment : Fragment() {
+class CountriesFragment : Fragment(), CountriesAdapter.CountriesViewHolderListener {
 
     private lateinit var countriesRepository: CountriesRepository
     private lateinit var listCountryModelResponse: ArrayList<CountryModelResponse>
@@ -34,7 +34,7 @@ class CountriesFragment : Fragment() {
         super.onCreate(savedInstanceState)
         Log.d("CountriesFragment","onCreate")
         listCountryModelResponse = ArrayList<CountryModelResponse>()
-        countriesAdapter = CountriesAdapter(listCountryModelResponse)
+        countriesAdapter = CountriesAdapter(listCountryModelResponse, this)
         countriesRepository = CountriesRepository(this)
     }
 
@@ -117,6 +117,10 @@ class CountriesFragment : Fragment() {
 
         countriesRepository.getCountriesMutableLiveDataResponse().observe(this, observeCountriesResponse)
         countriesRepository.getCountriesMutableLiveDataError().observe(this, observeCountriesError)
+    }
+
+    override fun onItemClick(countriesViewHolder: CountriesAdapter.CountriesViewHolder) {
+        Toast.makeText(context, ""+listCountryModelResponse[countriesViewHolder.adapterPosition], Toast.LENGTH_SHORT).show()
     }
 
 }
