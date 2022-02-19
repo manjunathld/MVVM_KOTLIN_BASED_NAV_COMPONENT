@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface CountriesAPI {
 
     @GET(CONSTANTS.PATH_PUBLISH_HOLIDAY)
-    fun getCountries(): Call<List<CountryModel>>
+    fun getCountries(): Call<List<CountryModelResponse>>
 
 }

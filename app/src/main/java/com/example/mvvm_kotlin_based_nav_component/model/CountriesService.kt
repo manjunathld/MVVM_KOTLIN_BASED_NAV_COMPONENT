@@ -28,7 +28,7 @@ class CountriesService() {
         countriesAPI = retrofit.create(CountriesAPI::class.java)
     }
 
-    public fun getCountries(): Call<List<CountryModel>> {
+    public fun getCountries(): Call<List<CountryModelResponse>> {
         return countriesAPI.getCountries()
     }
 
